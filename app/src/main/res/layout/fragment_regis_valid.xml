@@ -1,34 +1,8 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/windowBackground"
-    android:gravity="center"
-    tools:context="com.flipbox.cover.coolist.activity.RegisterActivity">
+    tools:context="com.flipbox.cover.coolist.fragment.RegisValidFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/container_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include
-                android:id="@+id/toolbar"
-                layout="@layout/toolbar" />
-        </LinearLayout>
-
-        <FrameLayout
-            android:id="@+id/container_body"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-<!--
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -40,23 +14,22 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Waht is your Saka email address?"
+            android:text="Is this you?"
             android:textColor="@color/background"
             android:gravity="center"
             android:textSize="20dp"/>
-        <EditText
+        <TextView
             android:layout_marginTop="20dp"
             android:id="@+id/sakaEmail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="you@sakadigital.co.id"
             android:gravity="center"/>
 
         <Button
             android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Next"
+            android:text="Yup, that's me"
             android:textColor="@color/windowBackground"
             android:background="@color/background"
             android:id="@+id/btnNext" />
@@ -65,10 +38,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/windowBackground"
-            android:text="I don't have it"
+            android:text="No, who's that?"
             android:layout_marginTop="15dp"
             android:id="@+id/btnCancel" />
     </LinearLayout>
--->
 
-</LinearLayout>
+</FrameLayout>

@@ -7,7 +7,7 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
-    <string name="nav_item_home">Home</string>
+    <string name="nav_item_home">Contact</string>
     <string name="nav_item_friends">Friends</string>
     <string name="nav_item_notifications">Messages</string>
     <string name="nav_item_logout">Log Out</string>
@@ -22,7 +22,7 @@
 
     <string name="title_messages">Messages</string>
     <string name="title_friends">Friends</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">FlipBox</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
