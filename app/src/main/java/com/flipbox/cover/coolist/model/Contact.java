@@ -6,12 +6,13 @@ package com.flipbox.cover.coolist.model;
  * twitter @mistiawanagus
  */
 public class Contact {
-    private String firstName,lastName,phone,twitter,facebook,linkedin, thumbnailUrl, email;
+    private String firstName,lastName,phone,twitter,facebook,linkedin, thumbnailUrl, email,role_id,company_id,status_id;
 
     public Contact(){
     }
 
-    public Contact(String firstName, String lastName, String phone, String twitter, String facebook, String linkedin, String thumbnailUrl, String email) {
+    public Contact(String firstName, String lastName, String phone, String twitter, String facebook,
+                   String linkedin, String thumbnailUrl, String email, String role_id, String company_id, String status_id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -20,6 +21,33 @@ public class Contact {
         this.linkedin = linkedin;
         this.thumbnailUrl = thumbnailUrl;
         this.email = email;
+        this.role_id = role_id;
+        this.company_id = company_id;
+        this.status_id = status_id;
+    }
+
+    public String getRole_id() {
+        return role_id;
+    }
+
+    public String getCompany_id() {
+        return company_id;
+    }
+
+    public String getStatus_id() {
+        return status_id;
+    }
+
+    public void setRole_id(String role_id) {
+        this.role_id = role_id;
+    }
+
+    public void setCompany_id(String company_id) {
+        this.company_id = company_id;
+    }
+
+    public void setStatus_id(String status_id) {
+        this.status_id = status_id;
     }
 
     public void setEmail(String email) {

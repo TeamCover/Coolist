@@ -22,7 +22,7 @@ public class SessionManager {
     int PRIVATE_MODE = 0;
 
     // Shared preferences file name
-    private static final String PREF_NAME = "AndroidHiveLogin";
+    private static final String PREF_NAME = "CoolistLogin";
 
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
 
@@ -35,7 +35,6 @@ public class SessionManager {
     public void setLogin(boolean isLoggedIn) {
 
         editor.putBoolean(KEY_IS_LOGGEDIN, isLoggedIn);
-
         // commit changes
         editor.commit();
 

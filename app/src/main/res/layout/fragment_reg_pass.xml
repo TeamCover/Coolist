@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.flipbox.cover.coolist.fragment.RegisValidFragment">
+    tools:context="com.flipbox.cover.coolist.fragment.RegPassFragment">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -13,32 +13,28 @@
 
         <TextView
             android:layout_width="fill_parent"
+            android:id="@+id/Username"
             android:layout_height="wrap_content"
-            android:text="Is this you?"
+            android:text="oh hello there?"
             android:textColor="@color/background"
             android:gravity="center"
             android:textSize="20dp"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="What is your password?"/>
 
-        <com.android.volley.toolbox.NetworkImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/thumbnail"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:password="true"
+            android:id="@+id/userPass"
+            android:hint="@string/hint_password"
             />
-        <TextView
-            android:layout_marginTop="5dp"
-            android:id="@+id/Name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Agus Mistiawan"/>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/role"
-            android:gravity="center"
-            android:text="1"/>
 
         <Button
             android:layout_marginTop="20dp"
@@ -49,13 +45,5 @@
             android:background="@color/background"
             android:id="@+id/btnNext" />
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/windowBackground"
-            android:text="No, who's that?"
-            android:layout_marginTop="15dp"
-            android:id="@+id/btnCancel" />
     </LinearLayout>
-
 </FrameLayout>

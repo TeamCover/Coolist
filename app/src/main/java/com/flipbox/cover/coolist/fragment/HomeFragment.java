@@ -74,6 +74,7 @@ public class HomeFragment extends Fragment {
                                 contact.setFirstName(obj.getString("first_name"));
                                 contact.setLastName(obj.getString("last_name"));
                                 contact.setPhone(obj.getString("phone"));
+                                contact.setThumbnailUrl(obj.getString("profile_picture"));
 
                                 contactList.add(contact);
                             } catch (JSONException e) {

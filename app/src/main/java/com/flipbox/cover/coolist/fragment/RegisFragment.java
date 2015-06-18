@@ -71,7 +71,7 @@ public class RegisFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_regis, container, false);
         Button btnNext = (Button)view.findViewById(R.id.btnNext);
         Button btnCancel = (Button)view.findViewById(R.id.btnCancel);
@@ -94,7 +94,6 @@ public class RegisFragment extends Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(final String  email) {
         String tag_string_req = "req_signup";
         pDialog = new ProgressDialog(getActivity());
@@ -110,10 +109,13 @@ public class RegisFragment extends Fragment {
                     JSONObject obj = null;
                     try {
                         obj = jsonArray.getJSONObject(0);
-                        String jsonEmail = obj.getString("email");
-                        if (email.equals(jsonEmail)) {
+                        String Email = obj.getString("email");
+                        String Name = obj.getString("first_name") +" "+ obj.getString("last_name");
+                        int Role = obj.getInt("role_id");
+                        String url_pict = obj.getString("profile_picture");
+                        if (email.equals(Email)) {
                             if (mListener != null) {
-                                mListener.onFragmentInteraction(email);
+                                mListener.onFragmentInteraction(Email,Name,Role,url_pict);
                             }
                         } else {
                             Toast.makeText(getActivity().getBaseContext(), "Email or Password not match 1!!", Toast.LENGTH_LONG).show();
@@ -169,7 +171,7 @@ public class RegisFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(String email);
+        public void onFragmentInteraction(String email, String name, int role,String url_pict);
     }
 
 }

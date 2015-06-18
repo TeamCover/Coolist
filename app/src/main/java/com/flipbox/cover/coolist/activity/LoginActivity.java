@@ -107,19 +107,20 @@ public class LoginActivity extends ActionBarActivity {
                         obj = jsonArray.getJSONObject(0);
                         String jsonEmail = obj.getString("email");
                         if (email.equals(jsonEmail)) {
+                            session.setLogin(true);
                             Intent intent = new Intent(LoginActivity.this,
                                     MainActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(getBaseContext(), "Email or Password not match 1!!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Email or Password not match !!", Toast.LENGTH_LONG).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
                 } else {
-                    Toast.makeText(getBaseContext(), "Email or Password not match 2!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Email or Password not match !!", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -128,7 +129,7 @@ public class LoginActivity extends ActionBarActivity {
                 hideDialog();
                 Log.e(TAG, "Login Error: " + volleyError.getMessage());
                 Toast.makeText(getApplicationContext(),
-                        volleyError.getMessage(), Toast.LENGTH_LONG).show();
+                        "Connection interrupted!", Toast.LENGTH_LONG).show();
             }
         });
         AppController.getInstance().addToRequestQueue(jsonArrayRequest);

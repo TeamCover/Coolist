@@ -6,38 +6,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.flipbox.cover.coolist.R;
+import com.flipbox.cover.coolist.app.AppController;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link RegisValidFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link RegisValidFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class RegisValidFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     public static final String ARG_EMAIL = "email";
+    public static final String ARG_NAME = "name";
+    public static final String ARG_ROLE = "role";
+    public static final String ARG_URL_PICT = "url_pict";
 
 
-    // TODO: Rename and change types of parameters
-    private String email;
 
+    private String email,url_picture,name;
+    private int role;
 
+    ImageLoader imageLoader = AppController.getInstance().getImageLoader();
     private OnFragmentInteractionListener mListener;
 
-    // TODO: Rename and change types and number of parameters
-    public static RegisValidFragment newInstance(String email) {
-        RegisValidFragment fragment = new RegisValidFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_EMAIL, email);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     public RegisValidFragment() {
         // Required empty public constructor
@@ -49,14 +40,18 @@ public class RegisValidFragment extends Fragment {
 
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_regis_valid, container, false);
-
+        Button btnNext = (Button)view.findViewById(R.id.btnNext);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonPressed(email);
+            }
+        });
 
         return view;
     }
@@ -67,16 +62,23 @@ public class RegisValidFragment extends Fragment {
         Bundle arg = getArguments();
         if(arg!=null){
             email = arg.getString(ARG_EMAIL);
-            TextView uEmail = (TextView)getView().findViewById(R.id.sakaEmail);
-            uEmail.setText(email);
+            name = arg.getString(ARG_NAME);
+            role = arg.getInt(ARG_ROLE);
+            url_picture = arg.getString(ARG_URL_PICT);
+            TextView uName = (TextView)getView().findViewById(R.id.Name);
+            NetworkImageView thumbnail = (NetworkImageView)getView().findViewById(R.id.thumbnail);
+            TextView uRole = (TextView)getView().findViewById(R.id.role);
+            if(imageLoader == null)
+                imageLoader = AppController.getInstance().getImageLoader();
+            thumbnail.setImageUrl(url_picture,imageLoader);
+            uName.setText(name);
+            uRole.setText(String.valueOf(role));
         }
-
-
-
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(String uri) {
+
         if (mListener != null) {
             mListener.onFragmentValidInteraction(uri);
         }
@@ -99,18 +101,8 @@ public class RegisValidFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         public void onFragmentValidInteraction(String uri);
     }
 
