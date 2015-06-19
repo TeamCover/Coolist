@@ -8,11 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.flipbox.cover.coolist.R;
 import com.flipbox.cover.coolist.adapter.CustomListAdapter;
@@ -58,6 +59,13 @@ public class HomeFragment extends Fragment {
         listView = (ListView)getView().findViewById(R.id.list);
         adapter = new CustomListAdapter(getActivity(), contactList);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Contact contact = adapter.getDataPosition(position);
+                Toast.makeText(getActivity().getApplicationContext(),contact.getFirstName(),Toast.LENGTH_LONG).show();
+            }
+        });
         pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("Loading..");
         pDialog.show();
@@ -87,8 +95,9 @@ public class HomeFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                VolleyLog.d("Errorcoyyy: " + volleyError.getMessage());
                 hidePDialog();
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "Connection interrupted!", Toast.LENGTH_LONG).show();
             }
         });
         AppController.getInstance().addToRequestQueue(contactReq);

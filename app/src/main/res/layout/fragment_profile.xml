@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.flipbox.cover.coolist.fragment.FriendsFragment">
+    tools:context="com.flipbox.cover.coolist.fragment.ProfileFragment">
 
     <TextView
         android:id="@+id/label"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textSize="45dp"
-        android:text="FRIENDS"
+        android:text="PROFILE"
         android:textStyle="bold"/>
 
     <TextView

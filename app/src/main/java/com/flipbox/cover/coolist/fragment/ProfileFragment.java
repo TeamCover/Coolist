@@ -14,8 +14,8 @@ import com.flipbox.cover.coolist.R;
  * mistiawanagus@gmail.com
  * twitter @mistiawanagus
  */
-public class FriendsFragment extends Fragment {
-    public FriendsFragment() {
+public class ProfileFragment extends Fragment {
+    public ProfileFragment() {
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class FriendsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_friends,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_profile,container,false);
         return rootView;
     }
 

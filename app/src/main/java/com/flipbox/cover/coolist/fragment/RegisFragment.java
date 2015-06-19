@@ -118,14 +118,14 @@ public class RegisFragment extends Fragment {
                                 mListener.onFragmentInteraction(Email,Name,Role,url_pict);
                             }
                         } else {
-                            Toast.makeText(getActivity().getBaseContext(), "Email or Password not match 1!!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity().getBaseContext(), "Email not found!!", Toast.LENGTH_LONG).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
                 } else {
-                    Toast.makeText(getActivity().getBaseContext(), "Email or Password not match 2!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity().getBaseContext(), "Email not found!!", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -134,7 +134,7 @@ public class RegisFragment extends Fragment {
                 pDialog.dismiss();
                 Log.e("Login ", "Login Error: " + volleyError.getMessage());
                 Toast.makeText(getActivity().getApplicationContext(),
-                        volleyError.getMessage(), Toast.LENGTH_LONG).show();
+                        "Connection interrupted!", Toast.LENGTH_LONG).show();
             }
         });
         AppController.getInstance().addToRequestQueue(jsonArrayRequest);

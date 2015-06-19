@@ -3,7 +3,6 @@ package com.flipbox.cover.coolist.activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,6 +25,7 @@ public class RegisterActivity extends ActionBarActivity implements RegisFragment
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Register");
 
         fragment = new RegisFragment();
@@ -88,7 +88,6 @@ public class RegisterActivity extends ActionBarActivity implements RegisFragment
     }
 
     @Override
-    public void onFragmentPassInteraction(Uri uri) {
-
+    public void onFragmentPassInteraction(String uri) {
     }
 }

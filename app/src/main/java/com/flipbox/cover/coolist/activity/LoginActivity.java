@@ -43,6 +43,7 @@ public class LoginActivity extends ActionBarActivity {
         setContentView(R.layout.activity_login);
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Login");
 
@@ -94,7 +95,7 @@ public class LoginActivity extends ActionBarActivity {
         pDialog.setMessage("Logging in ...");
         showDialog();
 
-        String URL = AppConfig.URL_LOGIN+"?email="+email;
+        String URL = AppConfig.URL_LOGIN+"?email="+email+"&password="+password;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
@@ -132,7 +133,7 @@ public class LoginActivity extends ActionBarActivity {
                         "Connection interrupted!", Toast.LENGTH_LONG).show();
             }
         });
-        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
 
     }
 

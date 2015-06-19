@@ -40,7 +40,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Yup, that's me"
+            android:text="Next"
             android:textColor="@color/windowBackground"
             android:background="@color/background"
             android:id="@+id/btnNext" />
