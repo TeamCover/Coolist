@@ -10,5 +10,11 @@ public class AppConfig {
 
     public static String URL_REGISTER = "http://contact.sakadigital.id/api/users/";
 
-    public final static String URL_CONTACT = "http://contact.sakadigital.id/api/users";
+    public static String URL_COMPANY = "http://contact.sakadigital.id/api/companies";
+
+    public static String URL_ROLE = "http://contact.sakadigital.id/api/roles";
+
+    public static String URL_STATUS = "http://contact.sakadigital.id/api/status_types";
+
+    public final static String URL_CONTACT = "http://contact.sakadigital.id/api/users?company_id=";
 }

@@ -19,6 +19,7 @@ import com.flipbox.cover.coolist.R;
 import com.flipbox.cover.coolist.adapter.CustomListAdapter;
 import com.flipbox.cover.coolist.app.AppConfig;
 import com.flipbox.cover.coolist.app.AppController;
+import com.flipbox.cover.coolist.helper.SQLiteHandler;
 import com.flipbox.cover.coolist.model.Contact;
 
 import org.json.JSONArray;
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
     private ListView listView;
     private ProgressDialog pDialog;
     private CustomListAdapter adapter;
+    SQLiteHandler db;
     public HomeFragment() {
     }
 
@@ -56,6 +58,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        db = new SQLiteHandler(getActivity());
         listView = (ListView)getView().findViewById(R.id.list);
         adapter = new CustomListAdapter(getActivity(), contactList);
         listView.setAdapter(adapter);
@@ -63,13 +66,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Contact contact = adapter.getDataPosition(position);
-                Toast.makeText(getActivity().getApplicationContext(),contact.getFirstName(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(), contact.getFirstName(), Toast.LENGTH_LONG).show();
             }
         });
         pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("Loading..");
         pDialog.show();
-        JsonArrayRequest contactReq = new JsonArrayRequest(AppConfig.URL_CONTACT,
+        String URL = AppConfig.URL_CONTACT+String.valueOf(db.getUserCompany());
+        JsonArrayRequest contactReq = new JsonArrayRequest(URL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray jsonArray) {

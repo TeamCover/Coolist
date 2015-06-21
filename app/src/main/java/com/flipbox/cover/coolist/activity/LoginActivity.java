@@ -65,6 +65,7 @@ public class LoginActivity extends ActionBarActivity {
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
                 if (email.trim().length() > 0 && password.trim().length() > 0) {
+                    getFetchData();
                     checkLogin(email, password);
                 } else {
                     Toast.makeText(getApplicationContext(),
@@ -77,10 +78,83 @@ public class LoginActivity extends ActionBarActivity {
 
     }
 
-    private void checkLogin(final String email, final String password){
-        String tag_string_req = "req_login";
+    private void getFetchData() {
         pDialog.setMessage("Logging in ...");
         showDialog();
+
+        // Get data company
+        JsonArrayRequest comReq = new JsonArrayRequest(AppConfig.URL_COMPANY, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                Log.d("JSON", jsonArray.toString());
+                for(int i=0; i<jsonArray.length(); i++){
+                    try {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+                        db.addCompany(obj.getInt("id"),obj.getString("name"),obj.getString("address"),obj.getString("token"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Toast.makeText(getApplicationContext(),
+                        "Connection interrupted!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        AppController.getInstance().addToRequestQueue(comReq);
+
+        // Get data Role
+        JsonArrayRequest roleReq = new JsonArrayRequest(AppConfig.URL_ROLE, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                Log.d("JSON", jsonArray.toString());
+                for(int i=0; i<jsonArray.length(); i++){
+                    try {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+                        db.addRole(obj.getInt("id"), obj.getString("name"));;
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Toast.makeText(getApplicationContext(),
+                        "Connection interrupted!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        AppController.getInstance().addToRequestQueue(roleReq);
+
+        // Get data Status
+        JsonArrayRequest statusReq = new JsonArrayRequest(AppConfig.URL_STATUS, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                Log.d("JSON", jsonArray.toString());
+                for(int i=0; i<jsonArray.length(); i++){
+                    try {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+                        db.addStatus(obj.getInt("id"), obj.getString("name"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Toast.makeText(getApplicationContext(),
+                        "Connection interrupted!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        AppController.getInstance().addToRequestQueue(statusReq);
+
+    }
+
+    private void checkLogin(final String email, final String password){
+        String tag_string_req = "req_login";
         String URL = AppConfig.URL_LOGIN+"?email="+email+"&password="+password;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
@@ -93,6 +167,7 @@ public class LoginActivity extends ActionBarActivity {
                         obj = jsonArray.getJSONObject(0);
                         String jsonEmail = obj.getString("email");
                         if (email.equals(jsonEmail)) {
+                            db.addUser(obj.getInt("id"), obj.getInt("company_id"));
                             session.setLogin(true);
                             Intent intent = new Intent(LoginActivity.this,
                                     MainActivity.class);
