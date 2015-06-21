@@ -3,7 +3,9 @@ package com.flipbox.cover.coolist.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,11 +22,13 @@ public class RegisValidFragment extends Fragment {
     public static final String ARG_NAME = "name";
     public static final String ARG_ROLE = "role";
     public static final String ARG_URL_PICT = "url_pict";
+    public static final String ARG_ID = "id";
+    public static final String ARG_ID_COMPANY= "id_company";
 
 
 
     private String email,url_picture,name;
-    private int role;
+    private int role,id,company;
 
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
     private OnFragmentInteractionListener mListener;
@@ -43,16 +47,17 @@ public class RegisValidFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_regis_valid, container, false);
         Button btnNext = (Button)view.findViewById(R.id.btnNext);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onButtonPressed(email);
+                onButtonPressed(email,name,id,company);
             }
         });
-
+        ((ActionBarActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((ActionBarActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -65,6 +70,8 @@ public class RegisValidFragment extends Fragment {
             name = arg.getString(ARG_NAME);
             role = arg.getInt(ARG_ROLE);
             url_picture = arg.getString(ARG_URL_PICT);
+            id = arg.getInt(ARG_ID);
+            company = arg.getInt(ARG_ID_COMPANY);
             TextView uName = (TextView)getView().findViewById(R.id.Name);
             NetworkImageView thumbnail = (NetworkImageView)getView().findViewById(R.id.thumbnail);
             TextView uRole = (TextView)getView().findViewById(R.id.role);
@@ -76,11 +83,10 @@ public class RegisValidFragment extends Fragment {
         }
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(String uri) {
+    public void onButtonPressed(String email, String name, int id, int company) {
 
         if (mListener != null) {
-            mListener.onFragmentValidInteraction(uri);
+            mListener.onFragmentValidInteraction(email,name,id,company);
         }
     }
 
@@ -103,7 +109,18 @@ public class RegisValidFragment extends Fragment {
 
 
     public interface OnFragmentInteractionListener {
-        public void onFragmentValidInteraction(String uri);
+        public void onFragmentValidInteraction(String email,String name,int id, int company);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home){
+            getFragmentManager().popBackStackImmediate();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }

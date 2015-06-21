@@ -50,36 +50,23 @@ public class LoginActivity extends ActionBarActivity {
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btnLogin);
-
         db = new SQLiteHandler(getApplicationContext());
-        // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-
-        // Session manager
         session = new SessionManager(getApplicationContext());
-
-        // Check if user is already logged in or not
         if (session.isLoggedIn()) {
-            // User is already logged in. Take him to main activity
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
-
-        // Login button Click Event
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
-
-                // Check for empty data in the form
                 if (email.trim().length() > 0 && password.trim().length() > 0) {
-                    // login user
                     checkLogin(email, password);
                 } else {
-                    // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
                             "Please enter the credentials!", Toast.LENGTH_LONG)
                             .show();
@@ -94,9 +81,7 @@ public class LoginActivity extends ActionBarActivity {
         String tag_string_req = "req_login";
         pDialog.setMessage("Logging in ...");
         showDialog();
-
         String URL = AppConfig.URL_LOGIN+"?email="+email+"&password="+password;
-
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
@@ -149,7 +134,6 @@ public class LoginActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_login, menu);
         return true;
     }

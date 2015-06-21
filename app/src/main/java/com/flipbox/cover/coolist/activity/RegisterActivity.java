@@ -3,11 +3,10 @@ package com.flipbox.cover.coolist.activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.flipbox.cover.coolist.R;
 import com.flipbox.cover.coolist.fragment.RegPassFragment;
@@ -24,61 +23,42 @@ public class RegisterActivity extends ActionBarActivity implements RegisFragment
         setContentView(R.layout.activity_register);
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Register");
-
         fragment = new RegisFragment();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.container_body,fragment);
+        ft.addToBackStack(RegisFragment.class.getSimpleName());
         ft.commit();
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_register, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onFragmentInteraction(String email, String name, int role, String url_pict) {
+    public void onFragmentInteraction(String email, String name, int role, String url_pict, int id, int company) {
         Fragment validFragment = new RegisValidFragment();
         Bundle args = new Bundle();
         args.putString(RegisValidFragment.ARG_EMAIL,email);
-        args.putString(RegisValidFragment.ARG_NAME,name);
+        args.putInt(RegisValidFragment.ARG_ID, id);
+        args.putString(RegisValidFragment.ARG_NAME, name);
         args.putInt(RegisValidFragment.ARG_ROLE, role);
-        args.putString(RegisValidFragment.ARG_URL_PICT,url_pict);
+        args.putString(RegisValidFragment.ARG_URL_PICT, url_pict);
+        args.putInt(RegisValidFragment.ARG_ID_COMPANY,company);
         validFragment.setArguments(args);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.container_body, validFragment);
-        transaction.addToBackStack(null);
+        transaction.addToBackStack(RegisValidFragment.class.getSimpleName());
         transaction.commit();
     }
 
     @Override
-    public void onFragmentValidInteraction(String email) {
+    public void onFragmentValidInteraction(String email, String name, int id, int company) {
         Fragment passFragment = new RegPassFragment();
         Bundle args = new Bundle();
         args.putString(RegPassFragment.ARG_EMAIL, email);
+        args.putString(RegPassFragment.ARG_NAME,name);
+        args.putInt(RegPassFragment.ARG_ID, id);
+        args.putInt(RegPassFragment.ARG_ID_COMPANY,company);
         passFragment.setArguments(args);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -88,6 +68,8 @@ public class RegisterActivity extends ActionBarActivity implements RegisFragment
     }
 
     @Override
-    public void onFragmentPassInteraction(String uri) {
+    public void onFragmentPassInteraction() {
+        Intent i = new Intent(this,MainActivity.class);
+        startActivity(i);
     }
 }

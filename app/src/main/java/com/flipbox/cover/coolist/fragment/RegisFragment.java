@@ -25,47 +25,17 @@ import org.json.JSONObject;
 
 
 public class RegisFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     ProgressDialog pDialog;
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RegisFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RegisFragment newInstance(String param1, String param2) {
-        RegisFragment fragment = new RegisFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     public RegisFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -98,6 +68,7 @@ public class RegisFragment extends Fragment {
         String tag_string_req = "req_signup";
         pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("Checking..");
+        pDialog.setCancelable(false);
         pDialog.show();
         String URL = AppConfig.URL_LOGIN+"?email="+email;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
@@ -110,12 +81,14 @@ public class RegisFragment extends Fragment {
                     try {
                         obj = jsonArray.getJSONObject(0);
                         String Email = obj.getString("email");
+                        int id = obj.getInt("id");
                         String Name = obj.getString("first_name") +" "+ obj.getString("last_name");
                         int Role = obj.getInt("role_id");
                         String url_pict = obj.getString("profile_picture");
+                        int company = obj.getInt("company_id");
                         if (email.equals(Email)) {
                             if (mListener != null) {
-                                mListener.onFragmentInteraction(Email,Name,Role,url_pict);
+                                mListener.onFragmentInteraction(Email,Name,Role,url_pict,id,company);
                             }
                         } else {
                             Toast.makeText(getActivity().getBaseContext(), "Email not found!!", Toast.LENGTH_LONG).show();
@@ -137,7 +110,7 @@ public class RegisFragment extends Fragment {
                         "Connection interrupted!", Toast.LENGTH_LONG).show();
             }
         });
-        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
 
 
     }
@@ -159,19 +132,9 @@ public class RegisFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(String email, String name, int role,String url_pict);
+        public void onFragmentInteraction(String email, String name, int role,String url_pict, int id, int company);
     }
 
 }

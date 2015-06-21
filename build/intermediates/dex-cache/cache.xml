@@ -2,6 +2,27 @@
 <items version="2" >
 
     <item
+        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-789d4d894a133168245cc388cabca4c8c075d3dc.jar" />
+    </item>
+    <item
+        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-4c6415d8318c81cbe91947d3807bba616f564edd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\classes-7c58d1ac812c0d06e9a635873d462d98da73dfba.jar" />
+    </item>
+    <item
         jar="C:\Users\Agus\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
@@ -16,27 +37,6 @@
         <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\classes-460bb3f1715318bbde368f07be2228348487f0a3.jar" />
     </item>
     <item
-        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\classes-7c58d1ac812c0d06e9a635873d462d98da73dfba.jar" />
-    </item>
-    <item
-        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-789d4d894a133168245cc388cabca4c8c075d3dc.jar" />
-    </item>
-    <item
-        jar="F:\Workspace\Android\KP\Coolist\app\libs\volley.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="d4aaa36e04ee71a83444f8367c97a46fda662d2c">
-        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\volley-f5f8ff2511962026092c05d730227d6dc1f19fed.jar" />
-    </item>
-    <item
         jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\libs\internal_impl-22.0.0.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
@@ -44,18 +44,11 @@
         <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-ae70944d06cc20c33bdb81282e78c875612cd0bc.jar" />
     </item>
     <item
-        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\jars\classes.jar"
+        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-44653c42cec88e850931e9b816286624331be5af.jar" />
-    </item>
-    <item
-        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\libs\internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-4c6415d8318c81cbe91947d3807bba616f564edd.jar" />
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-897383292c2fe64a03ca8f25090047628bbdc66e.jar" />
     </item>
     <item
         jar="C:\Users\Agus\Documents\GitHub\Coolist\app\libs\volley.jar"
@@ -65,11 +58,18 @@
         <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\volley-0d276af876effb76ea493110a70c0c358dee237c.jar" />
     </item>
     <item
-        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\classes.jar"
+        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-897383292c2fe64a03ca8f25090047628bbdc66e.jar" />
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-44653c42cec88e850931e9b816286624331be5af.jar" />
+    </item>
+    <item
+        jar="F:\Workspace\Android\KP\Coolist\app\libs\volley.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="d4aaa36e04ee71a83444f8367c97a46fda662d2c">
+        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\volley-f5f8ff2511962026092c05d730227d6dc1f19fed.jar" />
     </item>
     <item
         jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"

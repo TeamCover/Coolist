@@ -6,7 +6,6 @@
     android:gravity="center">
 
     <LinearLayout
-        android:layout_marginTop="100dip"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -16,7 +15,7 @@
             android:layout_marginBottom="100dp"
             android:layout_height="wrap_content"
             android:text="SAKA DIGITAL"
-            android:textSize="20dp"
+            android:textSize="10sp"
             android:gravity="center"
             android:textColor="@color/windowBackground"/>
 

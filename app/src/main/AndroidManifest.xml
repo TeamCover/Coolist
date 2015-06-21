@@ -21,13 +21,8 @@
 
         <activity
             android:name=".activity.RegisterActivity"
-            android:label="@string/title_activity_register"
-            android:parentActivityName=".activity.HomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.flipbox.cover.coolist.activity.HomeActivity"/>
+            android:label="@string/title_activity_register">
         </activity>
-
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login"
@@ -36,7 +31,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.HomeActivity"/>
         </activity>
-
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name" >

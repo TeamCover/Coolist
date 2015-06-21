@@ -2,7 +2,9 @@ package com.flipbox.cover.coolist.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,44 +12,35 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.flipbox.cover.coolist.R;
+import com.flipbox.cover.coolist.app.AppConfig;
+import com.flipbox.cover.coolist.app.AppController;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link RegPassFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link RegPassFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class RegPassFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    public static final String ARG_EMAIL = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
+    public static String ARG_EMAIL = "email";
+    public static final String ARG_NAME = "name";
+    public static final String ARG_ID = "id";
+    public static final String ARG_ID_COMPANY= "id_company";
     private Button btnNext;
     private EditText txtPaswsword;
 
-    // TODO: Rename and change types of parameters
-    private String email;
-    private String mParam2;
+    private String email,userName;
+    private int id, id_company;
 
+    ProgressDialog pDialog;
     private OnFragmentInteractionListener mListener;
 
 
-    // TODO: Rename and change types and number of parameters
-    public static RegPassFragment newInstance(String param1, String param2) {
-        RegPassFragment fragment = new RegPassFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_EMAIL, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     public RegPassFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -58,15 +51,15 @@ public class RegPassFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_reg_pass, container, false);
         btnNext = (Button)view.findViewById(R.id.btnNext);
         txtPaswsword = (EditText)view.findViewById(R.id.userPass);
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String pass = txtPaswsword.getText().toString();
-                onButtonPressed(pass);
+                onButtonPressed(pass,id,id_company);
             }
         });
         return view;
@@ -78,15 +71,46 @@ public class RegPassFragment extends Fragment {
         Bundle arg = getArguments();
         if (arg != null) {
             email = getArguments().getString(ARG_EMAIL);
+            userName = getArguments().getString(ARG_NAME);
+            id = getArguments().getInt(ARG_ID);
+            id_company = getArguments().getInt(ARG_ID_COMPANY);
             TextView name = (TextView)getView().findViewById(R.id.Username);
-            name.setText(email);
+            name.setText(userName);
         }
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(final String uri) {
-        if (mListener != null) {
-            mListener.onFragmentPassInteraction(uri);
+    public void onButtonPressed(final String password, int id, int id_company) {
+        pDialog = new ProgressDialog(getActivity());
+        pDialog.setMessage("Checking..");
+        pDialog.setCancelable(false);
+        pDialog.show();
+        String URL = AppConfig.URL_REGISTER+String.valueOf(id);
+        StringRequest putRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                pDialog.dismiss();
+                Log.d("Response", s);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                pDialog.dismiss();
+                Log.d("Response", volleyError.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                 Map<String, String> params = new HashMap<String, String>();
+                 params.put("password", password);
+                params.put("first_name", "agussss");
+                 return params;
+             }
+        };
+
+        AppController.getInstance().addToRequestQueue(putRequest);
+
+         if (mListener != null) {
+            mListener.onFragmentPassInteraction();
         }
     }
 
@@ -109,7 +133,7 @@ public class RegPassFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentPassInteraction(String uri);
+        public void onFragmentPassInteraction();
     }
 
 }
