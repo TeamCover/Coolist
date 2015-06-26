@@ -2,6 +2,7 @@ package com.flipbox.cover.coolist.fragment;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -16,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.flipbox.cover.coolist.R;
+import com.flipbox.cover.coolist.activity.DetailActivity;
 import com.flipbox.cover.coolist.adapter.CustomListAdapter;
 import com.flipbox.cover.coolist.app.AppConfig;
 import com.flipbox.cover.coolist.app.AppController;
@@ -66,7 +68,17 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Contact contact = adapter.getDataPosition(position);
-                Toast.makeText(getActivity().getApplicationContext(), contact.getFirstName(), Toast.LENGTH_LONG).show();
+                Intent i = new Intent(getActivity(), DetailActivity.class);
+                i.putExtra(DetailActivity.DESC_NAME,contact.getFirstName()+" "+contact.getLastName());
+                i.putExtra(DetailActivity.DESC_FACEBOOK, contact.getFacebook());
+                i.putExtra(DetailActivity.DESC_EMAIL, contact.getEmail());
+                i.putExtra(DetailActivity.DESC_HANDPHONE, contact.getPhone());
+                i.putExtra(DetailActivity.DESC_ROLE, contact.getRole_id());
+                i.putExtra(DetailActivity.DESC_LINKEDIN, contact.getLinkedin());
+                i.putExtra(DetailActivity.DESC_TWITTER, contact.getTwitter());
+                i.putExtra(DetailActivity.DESC_STATUS, contact.getStatus_id());
+                i.putExtra(DetailActivity.DESC_IMAGE, contact.getThumbnailUrl());
+                getActivity().startActivity(i);
             }
         });
         pDialog = new ProgressDialog(getActivity());
@@ -87,7 +99,13 @@ public class HomeFragment extends Fragment {
                                 contact.setLastName(obj.getString("last_name"));
                                 contact.setPhone(obj.getString("phone"));
                                 contact.setThumbnailUrl(obj.getString("profile_picture"));
-
+                                contact.setFacebook(obj.getString("facebook"));
+                                contact.setLinkedin(obj.getString("linkedin"));
+                                contact.setTwitter(obj.getString("twitter"));
+                                contact.setEmail(obj.getString("email"));
+                                contact.setRole_id(db.getRoleByKey(obj.getInt("role_id")));
+                                contact.setCompany_id(db.getCompanyByKey(obj.getInt("company_id")));
+                                contact.setStatus_id(db.getStatusByKey(obj.getInt("status_id")));
                                 contactList.add(contact);
                             } catch (JSONException e) {
                                 e.printStackTrace();

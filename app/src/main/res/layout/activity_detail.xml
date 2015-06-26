@@ -1,0 +1,237 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.flipbox.cover.coolist.activity.DetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/container_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_toEndOf="@+id/Name"
+            android:layout_toRightOf="@+id/Name"
+            android:fillViewport="false" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:orientation="vertical"
+                android:id="@+id/relatif">
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/thumbnail"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    />
+                <TextView
+                    android:layout_below="@+id/thumbnail"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/Name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="30dp"
+                    android:text="Agus Mistiawan"/>
+                <TextView
+                    android:layout_below="@+id/Name"
+                    android:textSize="20dp"
+                    android:layout_width="fill_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/role"
+                    android:gravity="center"
+                    android:textColor="#BBBBBB"
+                    android:text="Programmer"/>
+
+                <TextView
+                    android:layout_below="@+id/role"
+                    android:layout_marginTop="5dp"
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/posisi"
+                    android:textColor="@color/windowBackground"
+                    android:layout_gravity="center"
+                    android:background="@color/background"
+                    android:layout_centerHorizontal="true"
+                    android:text="Depok"/>
+
+                <View
+                    android:layout_below="@+id/posisi"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/margin1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BBBBBB"/>
+
+                <ImageView
+                    android:src="@drawable/phone"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/margin1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/phoneCall"/>
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="081368713112"
+                    android:layout_below="@+id/margin1"
+                    android:textSize="20dp"
+                    android:id="@+id/phoneNumber"
+                    android:layout_toRightOf="@+id/phoneCall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_below="@+id/phoneNumber"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/margin2"
+                    android:layout_toRightOf="@+id/phoneCall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#BBBBBB"/>
+
+                <ImageView
+                    android:src="@drawable/facebook"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/facebook"
+                    android:layout_below="@+id/margin2"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Agus Mistiawan"
+                    android:layout_below="@+id/margin2"
+                    android:id="@+id/facebooklink"
+                    android:textSize="20dp"
+                    android:layout_toRightOf="@+id/facebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_below="@+id/facebooklink"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/margin3"
+                    android:layout_toRightOf="@+id/facebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#BBBBBB"/>
+
+                <ImageView
+                    android:src="@drawable/twitter"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/twitter"
+                    android:layout_below="@+id/margin3"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Agus Mistiawan"
+                    android:layout_below="@+id/margin3"
+                    android:id="@+id/twitterlink"
+                    android:layout_toRightOf="@+id/twitter"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_below="@+id/twitterlink"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/margin4"
+                    android:layout_toRightOf="@+id/twitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#BBBBBB"/>
+
+                <ImageView
+                    android:src="@drawable/linkedin"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/linkedin"
+                    android:layout_below="@+id/margin4"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Agus Mistiawan"
+                    android:layout_below="@+id/margin4"
+                    android:id="@+id/linkedinlink"
+                    android:layout_toRightOf="@+id/linkedin"
+                    android:layout_width="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_below="@+id/linkedinlink"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/margin5"
+                    android:layout_toRightOf="@+id/linkedin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#BBBBBB"/>
+
+                <ImageView
+                    android:src="@drawable/email"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/email"
+                    android:layout_below="@+id/margin5"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Agus Mistiawan"
+                    android:layout_below="@+id/margin5"
+                    android:textSize="20dp"
+                    android:id="@+id/emaillink"
+                    android:layout_toRightOf="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_below="@+id/facebooklink"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/margin6"
+                    android:layout_toRightOf="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#BBBBBB"/>
+
+            </RelativeLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

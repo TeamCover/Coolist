@@ -17,4 +17,6 @@ public class AppConfig {
     public static String URL_STATUS = "http://contact.sakadigital.id/api/status_types";
 
     public final static String URL_CONTACT = "http://contact.sakadigital.id/api/users?company_id=";
+
+    public static String URL_PROFILE = "http://contact.sakadigital.id/api/users?id=";
 }

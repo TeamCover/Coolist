@@ -60,12 +60,14 @@ public class CustomListAdapter extends BaseAdapter{
         NetworkImageView thumbnail = (NetworkImageView)convertView.findViewById(R.id.thumbnail);
         TextView nama = (TextView)convertView.findViewById(R.id.nama);
         TextView job = (TextView)convertView.findViewById(R.id.job);
+        TextView lokasi = (TextView)convertView.findViewById(R.id.lokasi);
 
         Contact m = contactList.get(position);
 
         thumbnail.setImageUrl(m.getThumbnailUrl(), imageLoader);
         nama.setText(m.getFirstName() + " " + m.getLastName());
-        job.setText(m.getPhone());
+        job.setText(m.getRole_id());
+        lokasi.setText(m.getStatus_id());
         return convertView;
     }
 

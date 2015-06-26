@@ -189,7 +189,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery,null);
         cursor.moveToFirst();
         if(cursor.getCount() > 0){
-            name = cursor.getString(1);
+            name = cursor.getString(0);
         }
         db.close();
         Log.d(TAG, "Fetching name from Sqlite: " + name);
@@ -203,7 +203,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery,null);
         cursor.moveToFirst();
         if(cursor.getCount() > 0){
-            name = cursor.getString(1);
+            name = cursor.getString(0);
         }
         db.close();
         Log.d(TAG, "Fetching name from Sqlite: " + name);
@@ -212,12 +212,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public String getStatusByKey(int id){
         String name="";
-        String selectQuery = "SELECT "+ KEY_NAME_STATUS +" FROM " + TABLE_ROLE + " WHERE "+KEY_ID_STATUS+"="+String.valueOf(id);
+        String selectQuery = "SELECT "+ KEY_NAME_STATUS +" FROM " + TABLE_STATUS + " WHERE "+KEY_ID_STATUS+"="+String.valueOf(id);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery,null);
         cursor.moveToFirst();
         if(cursor.getCount() > 0){
-            name = cursor.getString(1);
+            name = cursor.getString(0);
         }
         db.close();
         Log.d(TAG, "Fetching name from Sqlite: " + name);
