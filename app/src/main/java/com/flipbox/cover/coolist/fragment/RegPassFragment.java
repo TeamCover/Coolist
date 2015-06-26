@@ -4,21 +4,31 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.flipbox.cover.coolist.R;
 import com.flipbox.cover.coolist.app.AppConfig;
 import com.flipbox.cover.coolist.app.AppController;
+import com.flipbox.cover.coolist.helper.SQLiteHandler;
+import com.flipbox.cover.coolist.helper.SessionManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +47,8 @@ public class RegPassFragment extends Fragment {
     private int id, id_company;
 
     ProgressDialog pDialog;
+    SessionManager sessionManager;
+    SQLiteHandler db;
     private OnFragmentInteractionListener mListener;
 
 
@@ -44,8 +56,19 @@ public class RegPassFragment extends Fragment {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            getFragmentManager().popBackStackImmediate();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = new SQLiteHandler(getActivity());
+        sessionManager = new SessionManager(getActivity());
     }
 
     @Override
@@ -62,6 +85,9 @@ public class RegPassFragment extends Fragment {
                 onButtonPressed(pass,id,id_company);
             }
         });
+        ((ActionBarActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((ActionBarActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -75,20 +101,96 @@ public class RegPassFragment extends Fragment {
             id = getArguments().getInt(ARG_ID);
             id_company = getArguments().getInt(ARG_ID_COMPANY);
             TextView name = (TextView)getView().findViewById(R.id.Username);
-            name.setText(userName);
+            name.setText("oh, hello there "+userName+"!");
         }
     }
 
-    public void onButtonPressed(final String password, int id, int id_company) {
+    public void onButtonPressed(final String password, final int id, final int id_company) {
         pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("Checking..");
         pDialog.setCancelable(false);
         pDialog.show();
         String URL = AppConfig.URL_REGISTER+String.valueOf(id);
-        StringRequest putRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
+        StringRequest putRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
+                db.deleteItem();
+                // Get data company
+                JsonArrayRequest comReq = new JsonArrayRequest(AppConfig.URL_COMPANY, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        Log.d("JSON", jsonArray.toString());
+                        for(int i=0; i<jsonArray.length(); i++){
+                            try {
+                                JSONObject obj = jsonArray.getJSONObject(i);
+                                db.addCompany(obj.getInt("id"),obj.getString("name"),obj.getString("address"),obj.getString("token"));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Connection interrupted!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                AppController.getInstance().addToRequestQueue(comReq);
+
+                // Get data Role
+                JsonArrayRequest roleReq = new JsonArrayRequest(AppConfig.URL_ROLE, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        Log.d("JSON", jsonArray.toString());
+                        for(int i=0; i<jsonArray.length(); i++){
+                            try {
+                                JSONObject obj = jsonArray.getJSONObject(i);
+                                db.addRole(obj.getInt("id"), obj.getString("name"));;
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Connection interrupted!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                AppController.getInstance().addToRequestQueue(roleReq);
+
+                // Get data Status
+                JsonArrayRequest statusReq = new JsonArrayRequest(AppConfig.URL_STATUS, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        Log.d("JSON", jsonArray.toString());
+                        for(int i=0; i<jsonArray.length(); i++){
+                            try {
+                                JSONObject obj = jsonArray.getJSONObject(i);
+                                db.addStatus(obj.getInt("id"), obj.getString("name"));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Connection interrupted!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                AppController.getInstance().addToRequestQueue(statusReq);
+                db.addUser(id,id_company);
+                sessionManager.setLogin(true);
                 pDialog.dismiss();
+                if (mListener != null) {
+
+                    mListener.onFragmentPassInteraction();
+                }
+
                 Log.d("Response", s);
             }
         }, new Response.ErrorListener() {
@@ -100,18 +202,15 @@ public class RegPassFragment extends Fragment {
         }) {
             @Override
             protected Map<String, String> getParams() {
-                 Map<String, String> params = new HashMap<String, String>();
-                 params.put("password", password);
-                params.put("first_name", "agussss");
-                 return params;
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("password", password);
+                return params;
              }
         };
 
         AppController.getInstance().addToRequestQueue(putRequest);
 
-         if (mListener != null) {
-            mListener.onFragmentPassInteraction();
-        }
+
     }
 
     @Override

@@ -32,6 +32,8 @@
             android:gravity="center"
             android:inputType="textPassword"
             android:password="true"
+            android:lines="1"
+            android:layout_marginTop="20dp"
             android:id="@+id/userPass"
             android:hint="@string/hint_password"
             />

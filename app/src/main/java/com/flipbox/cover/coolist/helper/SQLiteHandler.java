@@ -166,6 +166,22 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return company;
     }
 
+    public int getUserID(){
+        int id = 0;
+        String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // Move to first row
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0) {
+            id = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return  id;
+    }
+
     public String getCompanyByKey(int id){
         String name="";
         String selectQuery = "SELECT "+ KEY_NAME_COMPANY +" FROM " + TABLE_COMPANY + " WHERE "+KEY_ID_COMPANY+"="+String.valueOf(id);

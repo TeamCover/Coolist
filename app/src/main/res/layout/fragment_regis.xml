@@ -15,16 +15,17 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Waht is your Saka email address?"
+            android:text="What is your Saka email address?"
             android:textColor="@color/background"
             android:gravity="center"
             android:textSize="20dp"/>
         <EditText
             android:layout_marginTop="20dp"
             android:id="@+id/sakaEmail"
+            android:lines="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="you@sakadigital.co.id"
+            android:hint="your@sakadigital.co.id"
             android:gravity="center"/>
 
         <Button

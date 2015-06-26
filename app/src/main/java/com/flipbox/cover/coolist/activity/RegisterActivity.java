@@ -12,15 +12,18 @@ import com.flipbox.cover.coolist.R;
 import com.flipbox.cover.coolist.fragment.RegPassFragment;
 import com.flipbox.cover.coolist.fragment.RegisFragment;
 import com.flipbox.cover.coolist.fragment.RegisValidFragment;
+import com.flipbox.cover.coolist.helper.SQLiteHandler;
 
 public class RegisterActivity extends ActionBarActivity implements RegisFragment.OnFragmentInteractionListener, RegisValidFragment.OnFragmentInteractionListener, RegPassFragment.OnFragmentInteractionListener{
 
     private android.app.Fragment fragment;
     private Toolbar mToolbar;
+    SQLiteHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        db = new SQLiteHandler(this);
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Register");
@@ -63,7 +66,7 @@ public class RegisterActivity extends ActionBarActivity implements RegisFragment
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.container_body, passFragment);
-        transaction.addToBackStack(null);
+        transaction.addToBackStack(RegPassFragment.class.getSimpleName());
         transaction.commit();
     }
 

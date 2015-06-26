@@ -12,7 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.flipbox.cover.coolist.R;
+import com.flipbox.cover.coolist.fragment.ChangepassFragment;
 import com.flipbox.cover.coolist.fragment.HomeFragment;
+import com.flipbox.cover.coolist.fragment.ProfileFragment;
+import com.flipbox.cover.coolist.helper.SQLiteHandler;
 import com.flipbox.cover.coolist.helper.SessionManager;
 
 
@@ -21,12 +24,13 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
     SessionManager sessionManager;
-
+    SQLiteHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sessionManager = new SessionManager(this);
+        db = new SQLiteHandler(this);
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -47,9 +51,16 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
                 title = getString(R.string.title_home);
                 break;
             case 1:
+                fragment = new ProfileFragment();
+                title ="Profile";
                 break;
             case 2:
+                fragment = new ChangepassFragment();
+                title = "Change Password";
+                break;
+            case 3:
                 sessionManager.setLogin(false);
+                db.deleteItem();
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();

@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/windowBackground"
+    tools:context="com.flipbox.cover.coolist.fragment.ChangepassFragment"
+    android:id="@+id/frame">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET PASSWORD"
+            android:textColor="@color/background"
+            android:gravity="center"
+            android:textSize="20dp"/>
+        <EditText
+            android:layout_marginTop="20dp"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Current Password"
+            android:gravity="center"
+            android:id="@+id/oPassword" />
+
+        <EditText
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            android:id="@+id/nPassword"
+            android:lines="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="New Password"
+            android:gravity="center"/>
+
+        <EditText
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            android:lines="1"
+            android:id="@+id/cPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password"
+            android:gravity="center"/>
+
+        <Button
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:background="@color/background"
+            android:id="@+id/btnNext"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/result"
+            android:textColor="#FF0000"/>
+    </LinearLayout>
+
+</FrameLayout>

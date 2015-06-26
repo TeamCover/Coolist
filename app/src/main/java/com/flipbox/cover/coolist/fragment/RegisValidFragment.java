@@ -15,6 +15,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.flipbox.cover.coolist.R;
 import com.flipbox.cover.coolist.app.AppController;
+import com.flipbox.cover.coolist.helper.SQLiteHandler;
 
 public class RegisValidFragment extends Fragment {
 
@@ -32,6 +33,7 @@ public class RegisValidFragment extends Fragment {
 
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
     private OnFragmentInteractionListener mListener;
+    SQLiteHandler db;
 
 
     public RegisValidFragment() {
@@ -41,6 +43,7 @@ public class RegisValidFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = new SQLiteHandler(getActivity());
 
     }
 
@@ -79,7 +82,7 @@ public class RegisValidFragment extends Fragment {
                 imageLoader = AppController.getInstance().getImageLoader();
             thumbnail.setImageUrl(url_picture,imageLoader);
             uName.setText(name);
-            uRole.setText(String.valueOf(role));
+            uRole.setText(db.getRoleByKey(role));
         }
     }
 

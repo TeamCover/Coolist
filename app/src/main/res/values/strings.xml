@@ -8,12 +8,14 @@
 
     <string name="nav_item_home">Contact</string>
     <string name="nav_item_profile">Profile</string>
+    <string name="nav_item_change_password">Change Password</string>
     <string name="nav_item_logout">Log Out</string>
 
     <!-- navigation drawer item labels  -->
     <string-array name="nav_drawer_labels">
         <item>@string/nav_item_home</item>
         <item>@string/nav_item_profile</item>
+        <item>@string/nav_item_change_password</item>
         <item>@string/nav_item_logout</item>
     </string-array>
 
@@ -29,6 +31,4 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

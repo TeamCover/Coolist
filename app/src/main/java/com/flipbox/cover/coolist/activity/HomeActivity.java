@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import com.flipbox.cover.coolist.R;
 import com.flipbox.cover.coolist.helper.SessionManager;
 
 public class HomeActivity extends Activity {
 
-    private Button btnLogin, btnSignUp;
+    private ImageView btnLogin, btnSignUp;
     private SessionManager session;
 
     @Override
@@ -22,8 +22,8 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_home);
 
         session = new SessionManager(getApplicationContext());
-        btnLogin = (Button)findViewById(R.id.btnToLogin);
-        btnSignUp = (Button)findViewById(R.id.btnToSignUp);
+        btnLogin = (ImageView)findViewById(R.id.btnToLogin);
+        btnSignUp = (ImageView)findViewById(R.id.btnToSignUp);
 
         if(session.isLoggedIn()){
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
