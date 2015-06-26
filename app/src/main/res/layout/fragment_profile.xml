@@ -1,6 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/windowBackground"
     tools:context="com.flipbox.cover.coolist.fragment.ProfileFragment">
@@ -214,8 +216,17 @@
                 android:layout_height="1dp"
                 android:background="#BBBBBB"/>
 
+            <com.getbase.floatingactionbutton.AddFloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="@color/yellow"
+                fab:fab_colorPressed="@color/yellow_press"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+
         </RelativeLayout>
     </ScrollView>
+
 
 
 </FrameLayout>

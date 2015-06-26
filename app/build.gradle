@@ -24,4 +24,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile 'com.android.support:recyclerview-v7:21.0.+'
     compile files('libs/volley.jar')
+    compile 'com.getbase:floatingactionbutton:1.9.1'
 }

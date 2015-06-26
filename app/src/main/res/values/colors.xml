@@ -8,5 +8,7 @@
     <color name="colorAccent">#50E3C2</color>
     <color name="background">#32c5eb</color>
     <color name="input_login">#222222</color>
+    <color name="yellow">#ffd110</color>
+    <color name="yellow_press">#fee000</color>
     <color name="input_login_hint">#999999</color>
 </resources>
