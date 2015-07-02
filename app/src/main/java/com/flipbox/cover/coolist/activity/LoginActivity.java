@@ -13,9 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.flipbox.cover.coolist.R;
 import com.flipbox.cover.coolist.app.AppConfig;
 import com.flipbox.cover.coolist.app.AppController;
@@ -25,6 +28,11 @@ import com.flipbox.cover.coolist.helper.SessionManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -66,7 +74,8 @@ public class LoginActivity extends ActionBarActivity {
                 String password = inputPassword.getText().toString();
                 if (email.trim().length() > 0 && password.trim().length() > 0) {
                     getFetchData();
-                    checkLogin(email, password);
+                    String hashPassword = md5(password);
+                    checkLogin(email, hashPassword);
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter the credentials!", Toast.LENGTH_LONG)
@@ -155,47 +164,64 @@ public class LoginActivity extends ActionBarActivity {
 
     private void checkLogin(final String email, final String password){
         String tag_string_req = "req_login";
-        String URL = AppConfig.URL_LOGIN+"?email="+email+"&password="+password;
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+        StringRequest logReq = new StringRequest(Request.Method.POST, AppConfig.URL_LOGIN, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONArray jsonArray) {
-                Log.d("JSON", jsonArray.toString());
-                hideDialog();
-                if (jsonArray.length() == 1) {
-                    JSONObject obj = null;
-                    try {
-                        obj = jsonArray.getJSONObject(0);
-                        String jsonEmail = obj.getString("email");
-                        if (email.equals(jsonEmail)) {
+            public void onResponse(String s) {
+                    Log.d(TAG, s);
+                    hideDialog();
+                        try {
+                            JSONObject obj = new JSONObject(s);
                             db.addUser(obj.getInt("id"), obj.getInt("company_id"));
                             session.setLogin(true);
                             Intent intent = new Intent(LoginActivity.this,
                                     MainActivity.class);
                             startActivity(intent);
                             finish();
-                        } else {
-                            Toast.makeText(getBaseContext(), "Email or Password not match !!", Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                } else {
-                    Toast.makeText(getBaseContext(), "Email or Password not match !!", Toast.LENGTH_LONG).show();
-                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 hideDialog();
-                Log.e(TAG, "Login Error: " + volleyError.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        "Connection interrupted!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Email or password wrong!",Toast.LENGTH_LONG).show();
             }
-        });
-        AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
-
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("email", email);
+                params.put("password", password);
+                return params;
+            }
+        };
+        AppController.getInstance().addToRequestQueue(logReq,tag_string_req);
     }
+
+    public static final String md5(final String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i = 0; i < messageDigest.length; i++) {
+                String h = Integer.toHexString(0xFF & messageDigest[i]);
+                while (h.length() < 2)
+                    h = "0" + h;
+                hexString.append(h);
+            }
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 
     private void showDialog() {
         if (!pDialog.isShowing())
@@ -221,9 +247,7 @@ public class LoginActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }

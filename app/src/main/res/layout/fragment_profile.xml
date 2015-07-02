@@ -52,6 +52,10 @@
                 android:text="Programmer"/>
 
             <TextView
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:layout_below="@+id/role"
                 android:layout_marginTop="5dp"
                 android:textSize="15dp"
@@ -217,6 +221,7 @@
                 android:background="#BBBBBB"/>
 
             <com.getbase.floatingactionbutton.AddFloatingActionButton
+                android:id="@+id/set_float"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="@color/yellow"

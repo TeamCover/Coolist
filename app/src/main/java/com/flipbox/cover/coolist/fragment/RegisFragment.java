@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
@@ -75,7 +76,7 @@ public class RegisFragment extends Fragment {
         pDialog.setMessage("Checking..");
         pDialog.setCancelable(false);
         pDialog.show();
-        String URL = AppConfig.URL_LOGIN+"?email="+email;
+        String URL = AppConfig.URP_REG_FIRST+"?email="+email;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
@@ -93,20 +94,18 @@ public class RegisFragment extends Fragment {
                         int Role = Integer.parseInt(obj.getString("role_id"));
                         String url_pict = obj.getString("profile_picture");
                         int company = obj.getInt("company_id");
-                        if (email.equals(Email)) {
+                        int registered = obj.getInt("registered");
+                        if(registered == 1){
+                            Toast.makeText(getActivity().getBaseContext(), "This is email had been registered, please login", Toast.LENGTH_LONG).show();
+                        }else{
                             if (mListener != null) {
-                                mListener.onFragmentInteraction(Email,Name,Role,url_pict,id,company);
+                                mListener.onFragmentInteraction(Email, Name, Role, url_pict, id, company);
                             }
-                            else{
-                                Toast.makeText(getActivity().getBaseContext(), "Email not found!!", Toast.LENGTH_LONG).show();
-                            }
-                        } else {
-                            Toast.makeText(getActivity().getBaseContext(), "Email not found!!", Toast.LENGTH_LONG).show();
                         }
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 } else {
                     Toast.makeText(getActivity().getBaseContext(), "Email not found!!", Toast.LENGTH_LONG).show();
                 }
@@ -115,9 +114,7 @@ public class RegisFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 pDialog.dismiss();
-                Log.e("Login ", "Login Error: " + volleyError.getMessage());
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "Connection interrupted!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getBaseContext(), "Email not found!!", Toast.LENGTH_LONG).show();
             }
         });
         AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);

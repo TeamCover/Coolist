@@ -74,5 +74,6 @@ public class RegisterActivity extends ActionBarActivity implements RegisFragment
     public void onFragmentPassInteraction() {
         Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
+        finish();
     }
 }

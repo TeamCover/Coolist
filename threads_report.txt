@@ -1,0 +1,122 @@
+"<1> main@830368738264" prio=5 runnable
+  java.lang.Thread.State: RUNNABLE
+	  at com.flipbox.cover.coolist.fragment.HomeFragment$1$1$2.onErrorResponse(HomeFragment.java:101)
+	  at com.android.volley.Request.deliverError(Request.java:563)
+	  at com.android.volley.ExecutorDelivery$ResponseDeliveryRunnable.run(ExecutorDelivery.java:101)
+	  at android.os.Handler.handleCallback(Handler.java:733)
+	  at android.os.Handler.dispatchMessage(Handler.java:95)
+	  at android.os.Looper.loop(Looper.java:136)
+	  at android.app.ActivityThread.main(ActivityThread.java:5021)
+	  at java.lang.reflect.Method.invokeNative(Method.java:-1)
+	  at java.lang.reflect.Method.invoke(Method.java:515)
+	  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:827)
+	  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:643)
+	  at dalvik.system.NativeStart.main(NativeStart.java:-1)
+
+"<16> OkHttp ConnectionPool@830376326584" daemon prio=5 sleeping
+  java.lang.Thread.State: TIMED_WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Thread.parkFor(Thread.java:1205)
+	  at sun.misc.Unsafe.park(Unsafe.java:325)
+	  at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:197)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2056)
+	  at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:435)
+	  at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1035)
+	  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1097)
+	  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+	  at java.lang.Thread.run(Thread.java:841)
+
+"<15> Thread-278@830371761536" prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Thread.parkFor(Thread.java:1205)
+	  at sun.misc.Unsafe.park(Unsafe.java:325)
+	  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:157)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2017)
+	  at java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:510)
+	  at com.android.volley.NetworkDispatcher.run(NetworkDispatcher.java:88)
+
+"<14> Thread-277@830371761248" prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Thread.parkFor(Thread.java:1205)
+	  at sun.misc.Unsafe.park(Unsafe.java:325)
+	  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:157)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2017)
+	  at java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:510)
+	  at com.android.volley.NetworkDispatcher.run(NetworkDispatcher.java:88)
+
+"<13> Thread-276@830371760960" prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Thread.parkFor(Thread.java:1205)
+	  at sun.misc.Unsafe.park(Unsafe.java:325)
+	  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:157)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2017)
+	  at java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:510)
+	  at com.android.volley.NetworkDispatcher.run(NetworkDispatcher.java:88)
+
+"<12> Thread-275@830371760584" prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Thread.parkFor(Thread.java:1205)
+	  at sun.misc.Unsafe.park(Unsafe.java:325)
+	  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:157)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2017)
+	  at java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:510)
+	  at com.android.volley.NetworkDispatcher.run(NetworkDispatcher.java:88)
+
+"<11> Thread-274@830371760296" prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Thread.parkFor(Thread.java:1205)
+	  at sun.misc.Unsafe.park(Unsafe.java:325)
+	  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:157)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2017)
+	  at java.util.concurrent.PriorityBlockingQueue.take(PriorityBlockingQueue.java:510)
+	  at com.android.volley.CacheDispatcher.run(CacheDispatcher.java:90)
+
+"<7> FinalizerDaemon@830369247456" daemon prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Object.wait(Object.java:401)
+	  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:102)
+	  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:73)
+	  at java.lang.Daemons$FinalizerDaemon.run(Daemons.java:170)
+	  at java.lang.Thread.run(Thread.java:841)
+
+"<8> FinalizerWatchdogDaemon@830371131112" daemon prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Object.wait(Object.java:364)
+	  at java.lang.Daemons$FinalizerWatchdogDaemon.waitForObject(Daemons.java:230)
+	  at java.lang.Daemons$FinalizerWatchdogDaemon.run(Daemons.java:207)
+	  at java.lang.Thread.run(Thread.java:841)
+
+"<6> ReferenceQueueDaemon@830370242552" daemon prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Object.wait(Object.java:364)
+	  at java.lang.Daemons$ReferenceQueueDaemon.run(Daemons.java:130)
+	  at java.lang.Thread.run(Thread.java:841)
+
+"<10> Binder_2@830371068280" prio=5 runnable
+  java.lang.Thread.State: RUNNABLE
+	  at dalvik.system.NativeStart.run(NativeStart.java:-1)
+
+"<9> Binder_1@830371070904" prio=5 runnable
+  java.lang.Thread.State: RUNNABLE
+	  at dalvik.system.NativeStart.run(NativeStart.java:-1)
+
+"<5> Compiler@830370313792" daemon prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at dalvik.system.NativeStart.run(NativeStart.java:-1)
+
+"<3> Signal Catcher@830371162544" daemon prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at dalvik.system.NativeStart.run(NativeStart.java:-1)
+
+"<2> GC@830371419648" daemon prio=5 waiting
+  java.lang.Thread.State: WAITING
+	  at dalvik.system.NativeStart.run(NativeStart.java:-1)
+

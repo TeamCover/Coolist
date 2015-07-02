@@ -1,20 +1,27 @@
 package com.flipbox.cover.coolist.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.StringRequest;
 import com.flipbox.cover.coolist.R;
 import com.flipbox.cover.coolist.app.AppConfig;
 import com.flipbox.cover.coolist.app.AppController;
@@ -23,6 +30,10 @@ import com.flipbox.cover.coolist.helper.SQLiteHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Agus on 16/06/2015.
@@ -53,6 +64,60 @@ public class ProfileFragment extends Fragment {
         facebook = (TextView)rootView.findViewById(R.id.facebooklink);
         twitter = (TextView)rootView.findViewById(R.id.twitterlink);
         linkedin = (TextView)rootView.findViewById(R.id.linkedinlink);
+        rootView.findViewById(R.id.set_float).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (db == null)
+                    db = new SQLiteHandler(getActivity());
+                ArrayList<String> location = new ArrayList<String>();
+                location = db.getAllLocation();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Choose Location");
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.spinner_resource, null);
+                final Spinner spinner = (Spinner) dialogView.findViewById(R.id.spinner);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, location);
+                spinner.setAdapter(adapter);
+                builder.setView(dialogView)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                final String lokasi = spinner.getSelectedItem().toString();
+                                final int status_id = db.getStatusByDesc(lokasi);
+                                int id = db.getUserID();
+                                String URL = AppConfig.URL_REGISTER + String.valueOf(id);
+                                StringRequest putReq= new StringRequest(Request.Method.POST,URL, new Response.Listener<String>() {
+
+                                    @Override
+                                    public void onResponse(String s) {
+
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError volleyError) {
+                                        Toast.makeText(getActivity(), "Fail, Try again later", Toast.LENGTH_SHORT).show();
+                                    }
+                                }){
+                                    @Override
+                                    protected Map<String, String> getParams() throws AuthFailureError {
+                                        Map<String, String> params = new HashMap<String, String>();
+                                        params.put("status_id",String.valueOf(status_id));
+                                        params.put("status_description",lokasi);
+                                        return params;
+                                    }
+                                };
+                                AppController.getInstance().addToRequestQueue(putReq);
+                            }
+                        });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.create().show();
+            }
+        });
         return rootView;
     }
 

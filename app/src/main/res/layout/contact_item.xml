@@ -34,6 +34,10 @@
         android:textSize="13dp"/>
 
     <TextView
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:layout_marginRight="15dp"
         android:id="@+id/lokasi"
         android:layout_width="wrap_content"

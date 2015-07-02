@@ -51,16 +51,24 @@ public class RegisValidFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_regis_valid, container, false);
+        ((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((ActionBarActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setHasOptionsMenu(true);
         Button btnNext = (Button)view.findViewById(R.id.btnNext);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onButtonPressed(email,name,id,company);
+                onButtonPressed(email, name, id, company);
             }
         });
-        ((ActionBarActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((ActionBarActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-        setHasOptionsMenu(true);
+
+        Button btnCancel = (Button)view.findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStackImmediate();
+            }
+        });
         return view;
     }
 

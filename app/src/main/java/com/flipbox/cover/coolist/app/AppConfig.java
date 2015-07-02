@@ -6,7 +6,7 @@ package com.flipbox.cover.coolist.app;
  * twitter @mistiawanagus
  */
 public class AppConfig {
-    public static String URL_LOGIN = "http://contact.sakadigital.id/api/users";
+    public static String URL_LOGIN = "http://contact.sakadigital.id/api/users/login";
 
     public static String URL_REGISTER = "http://contact.sakadigital.id/api/users/";
 
@@ -19,4 +19,6 @@ public class AppConfig {
     public final static String URL_CONTACT = "http://contact.sakadigital.id/api/users?company_id=";
 
     public static String URL_PROFILE = "http://contact.sakadigital.id/api/users?id=";
+
+    public static String URP_REG_FIRST = "http://contact.sakadigital.id/api/users";
 }

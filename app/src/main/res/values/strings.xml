@@ -10,6 +10,7 @@
     <string name="nav_item_profile">Profile</string>
     <string name="nav_item_change_password">Change Password</string>
     <string name="nav_item_logout">Log Out</string>
+    <string name="test">CEKITDOT</string>
 
     <!-- navigation drawer item labels  -->
     <string-array name="nav_drawer_labels">
@@ -17,6 +18,7 @@
         <item>@string/nav_item_profile</item>
         <item>@string/nav_item_change_password</item>
         <item>@string/nav_item_logout</item>
+        <item>@string/test</item>
     </string-array>
 
     <string name="title_home">FlipBox</string>
@@ -33,5 +35,6 @@
     <string name="title_activity_detail">DetailActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_edit">EditActivity</string>
 
 </resources>

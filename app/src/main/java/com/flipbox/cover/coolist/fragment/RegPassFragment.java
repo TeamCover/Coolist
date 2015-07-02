@@ -30,6 +30,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -81,7 +83,7 @@ public class RegPassFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String pass = txtPaswsword.getText().toString();
+                String pass = md5(txtPaswsword.getText().toString());
                 onButtonPressed(pass,id,id_company);
             }
         });
@@ -103,6 +105,29 @@ public class RegPassFragment extends Fragment {
             TextView name = (TextView)getView().findViewById(R.id.Username);
             name.setText("oh, hello there "+userName+"!");
         }
+    }
+
+    public static final String md5(final String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i = 0; i < messageDigest.length; i++) {
+                String h = Integer.toHexString(0xFF & messageDigest[i]);
+                while (h.length() < 2)
+                    h = "0" + h;
+                hexString.append(h);
+            }
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     public void onButtonPressed(final String password, final int id, final int id_company) {
@@ -204,6 +229,7 @@ public class RegPassFragment extends Fragment {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("password", password);
+                params.put("registered","1");
                 return params;
              }
         };

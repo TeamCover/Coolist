@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:descendantFocusability="blocksDescendants"
-    android:background="#DDDDDD"
+    android:background="@color/windowBackground"
     tools:context="com.flipbox.cover.coolist.fragment.HomeFragment">
 
     <ListView
@@ -14,6 +14,7 @@
         android:id="@+id/list"
         android:divider="@color/background" />
     <com.getbase.floatingactionbutton.AddFloatingActionButton
+        android:id="@+id/set_float"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         fab:fab_colorNormal="@color/yellow"

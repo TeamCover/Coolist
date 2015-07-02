@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * Created by Agus on 16/06/2015.
  * mistiawanagus@gmail.com
@@ -166,6 +168,20 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return company;
     }
 
+    public int getStatusByDesc(String lokasi){
+        int id = 0;
+        String selectQuery = "SELECT "+KEY_ID_STATUS+" FROM "+TABLE_STATUS+" WHERE "+KEY_NAME_STATUS+"='"+lokasi+"';";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0) {
+            id = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return id;
+    }
+
     public int getUserID(){
         int id = 0;
         String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
@@ -191,6 +207,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             name = cursor.getString(0);
         }
+        cursor.close();
         db.close();
         Log.d(TAG, "Fetching name from Sqlite: " + name);
         return name;
@@ -205,6 +222,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             name = cursor.getString(0);
         }
+        cursor.close();
         db.close();
         Log.d(TAG, "Fetching name from Sqlite: " + name);
         return name;
@@ -219,6 +237,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             name = cursor.getString(0);
         }
+        cursor.close();
         db.close();
         Log.d(TAG, "Fetching name from Sqlite: " + name);
         return name;
@@ -227,6 +246,22 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Getting user login status return true if rows are there in table
      * */
+
+    public ArrayList<String> getAllLocation(){
+        ArrayList<String>  location = new ArrayList<String>();
+        String selecQuery = "SELECT "+KEY_NAME_STATUS+" FROM "+TABLE_STATUS;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selecQuery, null);
+        if(cursor.moveToFirst()){
+            do{
+                location.add(cursor.getString(0));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return location;
+    }
+
     public int getRowCount() {
         String countQuery = "SELECT  * FROM " + TABLE_LOGIN;
         SQLiteDatabase db = this.getReadableDatabase();

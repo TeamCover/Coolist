@@ -1,15 +1,21 @@
 package com.flipbox.cover.coolist.activity;
 
+import android.app.SearchManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.flipbox.cover.coolist.R;
 import com.flipbox.cover.coolist.fragment.ChangepassFragment;
@@ -28,6 +34,7 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        handleIntent(getIntent());
         setContentView(R.layout.activity_main);
         sessionManager = new SessionManager(this);
         db = new SQLiteHandler(this);
@@ -40,6 +47,18 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
         displayView(0);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Toast.makeText(getApplicationContext(),query,Toast.LENGTH_LONG).show();
+        }
     }
 
     private void displayView(int position) {
@@ -64,6 +83,11 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
+                break;
+            case 4:
+                Intent i = new Intent(MainActivity.this, EditActivity.class);
+                startActivity(i);
+                break;
             default:
                 break;
         }
@@ -80,6 +104,10 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
+        SearchView mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        mSearchView.setSearchableInfo(searchManager.getSearchableInfo(new ComponentName(getApplicationContext(), MainActivity.class)));
         return true;
     }
 
@@ -87,12 +115,6 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
