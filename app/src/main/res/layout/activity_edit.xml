@@ -5,6 +5,7 @@
     tools:context="com.flipbox.cover.coolist.activity.EditActivity">
 
     <LinearLayout
+        android:background="@color/windowBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -13,42 +14,158 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <include
                 android:id="@+id/toolbar"
                 layout="@layout/toolbar" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:gravity="center"
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:id="@+id/iProfile"
-                />
-            <Button
-                android:layout_marginTop="20dp"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView2" >
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Browse Image"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/windowBackground"
-                android:textStyle="bold"
-                android:id="@+id/loadImage"/>
-            <Button
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Upload Image"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/windowBackground"
-                android:textStyle="bold"
-                android:id="@+id/uoloadImage"/>
-        </LinearLayout>
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin">
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:id="@+id/iProfile" />
+                <TextView
+                    android:layout_marginTop="1dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iProfile"
+                    android:gravity="center"
+                    android:id="@+id/text"
+                    android:textStyle="italic|bold"
+                    android:layout_centerHorizontal="true"
+                    android:text="Change Image Proflie"/>
+                <EditText
+                    android:lines="1"
+                    android:layout_below="@+id/text"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/Name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:text="Agus Mistiawan"/>
+                <Spinner
+                    android:layout_below="@+id/Name"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/role"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#BBBBBB"
+                    android:text="Programmer"/>
+
+                <View
+                    android:layout_below="@+id/role"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/margin1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BBBBBB"/>
+
+                <ImageView
+                    android:src="@drawable/phone"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/margin1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/phoneCall"/>
+
+                <EditText
+                    android:lines="1"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="081368713112"
+                    android:layout_below="@+id/margin1"
+                    android:textSize="20dp"
+                    android:id="@+id/phoneNumber"
+                    android:layout_toRightOf="@+id/phoneCall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@drawable/facebook"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/facebook"
+                    android:layout_below="@+id/phoneNumber"
+                    />
+
+                <EditText
+                    android:lines="1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Agus Mistiawan"
+                    android:layout_below="@+id/phoneNumber"
+                    android:id="@+id/facebooklink"
+                    android:textSize="20dp"
+                    android:layout_toRightOf="@+id/facebook"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:src="@drawable/twitter"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/twitter"
+                    android:layout_below="@+id/facebooklink"
+                    />
+
+                <EditText
+                    android:lines="1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Agus Mistiawan"
+                    android:layout_below="@+id/facebooklink"
+                    android:id="@+id/twitterlink"
+                    android:layout_toRightOf="@+id/twitter"
+                    android:textSize="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@drawable/linkedin"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/linkedin"
+                    android:layout_below="@+id/twitterlink"
+                    />
+
+                <EditText
+                    android:lines="1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Agus Mistiawan"
+                    android:layout_below="@+id/twitterlink"
+                    android:id="@+id/linkedinlink"
+                    android:layout_toRightOf="@+id/linkedin"
+                    android:layout_width="match_parent"
+                    android:textSize="20dp"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/linkedinlink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bConfirm"
+                    android:text="Submit"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:textColor="@color/windowBackground"/>
+            </RelativeLayout>
+
+        </ScrollView>
     </LinearLayout>
 </RelativeLayout>

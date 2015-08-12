@@ -19,10 +19,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = "Coolist";
+
+    //User table name
+    private static final String TABLE_USER = "user";
 
     // Login table name
     private static final String TABLE_LOGIN = "login";
@@ -46,7 +49,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_ADDRESS_COMPANY = "address";
     private static final String KEY_TOKEN_COMPANY = "token";
 
-    // ROle Table columns names
+    // User Table Columns names
+    private static final String KEY_ID_USER = "id";
+    private static final String KEY_ID_NAME = "name";
+    private static final String KEY_ID_JOB = "job";
+    private static final String KEY_ID_LOCATION = "location";
+    private static final String KEY_ID_PROFILE = "profile";
+    private static final String KEY_ID_FACEBOOK = "facebook";
+    private static final String KEY_ID_TWITTER = "twitter";
+    private static final String KEY_ID_LINKEDID = "linkedin";
+    private static final String KEY_ID_EMAIL = "EMAIL";
+    private static final String KEY_ID_PHONE = "phone";
+
+    // Role Table columns names
     private static final String KEY_ID_ROLE = "id";
     private static final String KEY_NAME_ROLE = "name";
 
@@ -182,6 +197,20 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return id;
     }
 
+    public int getRoleByDesc(String role){
+        int id = 0;
+        String selectQuery = "SELECT "+KEY_ID_ROLE+" FROM "+TABLE_ROLE+" WHERE "+KEY_NAME_ROLE+"='"+role+"';";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0) {
+            id = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return id;
+    }
+
     public int getUserID(){
         int id = 0;
         String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
@@ -262,16 +291,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return location;
     }
 
-    public int getRowCount() {
-        String countQuery = "SELECT  * FROM " + TABLE_LOGIN;
+    public ArrayList<String> getAllRole(){
+        ArrayList<String>  role = new ArrayList<String>();
+        String selecQuery = "SELECT "+KEY_NAME_ROLE+" FROM "+TABLE_ROLE;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        int rowCount = cursor.getCount();
-        db.close();
+        Cursor cursor = db.rawQuery(selecQuery, null);
+        if(cursor.moveToFirst()){
+            do{
+                role.add(cursor.getString(0));
+            }while (cursor.moveToNext());
+        }
         cursor.close();
-
-        // return row count
-        return rowCount;
+        db.close();
+        return role;
     }
 
     /**

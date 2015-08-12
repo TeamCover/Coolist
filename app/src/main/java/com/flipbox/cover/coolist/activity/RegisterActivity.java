@@ -26,6 +26,8 @@ public class RegisterActivity extends ActionBarActivity implements RegisFragment
         db = new SQLiteHandler(this);
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Register");
         fragment = new RegisFragment();
         FragmentManager fragmentManager = getFragmentManager();
@@ -33,7 +35,6 @@ public class RegisterActivity extends ActionBarActivity implements RegisFragment
         ft.replace(R.id.container_body,fragment);
         ft.addToBackStack(RegisFragment.class.getSimpleName());
         ft.commit();
-
     }
 
     @Override

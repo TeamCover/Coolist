@@ -2,83 +2,6 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\libs\volley.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="d4aaa36e04ee71a83444f8367c97a46fda662d2c">
-        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\volley-0d276af876effb76ea493110a70c0c358dee237c.jar" />
-    </item>
-    <item
-        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-44653c42cec88e850931e9b816286624331be5af.jar" />
-    </item>
-    <item
-        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\classes-3fb7763aff11c0258b0bc7df6a7450691a56d1f7.jar" />
-    </item>
-    <item
-        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\classes-7c58d1ac812c0d06e9a635873d462d98da73dfba.jar" />
-    </item>
-    <item
-        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\libs\internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-ae70944d06cc20c33bdb81282e78c875612cd0bc.jar" />
-    </item>
-    <item
-        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-789d4d894a133168245cc388cabca4c8c075d3dc.jar" />
-    </item>
-    <item
-        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\classes-460bb3f1715318bbde368f07be2228348487f0a3.jar" />
-    </item>
-    <item
-        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-897383292c2fe64a03ca8f25090047628bbdc66e.jar" />
-    </item>
-    <item
-        jar="C:\Users\Agus\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-167d7a9a13e3938ce5978f0da7a4f18612b9bbbe.jar" />
-    </item>
-    <item
-        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\libs\internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-4c6415d8318c81cbe91947d3807bba616f564edd.jar" />
-    </item>
-    <item
-        jar="C:\Users\Agus\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-1f39f384f8754e42a2a16deaf9061e45e231eb83.jar" />
-    </item>
-    <item
         jar="F:\Workspace\Android\KP\Coolist\app\libs\volley.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
@@ -91,6 +14,90 @@
         revision="23.0.0 rc2"
         sha1="d4b681a6084ef53d2825520fc77fcaddde351f64">
         <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\classes-057e0d8883ea172842f8d00bc57450f08a225cb7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\classes-7c58d1ac812c0d06e9a635873d462d98da73dfba.jar" />
+    </item>
+    <item
+        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\libs\volley.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="d4aaa36e04ee71a83444f8367c97a46fda662d2c">
+        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\volley-0d276af876effb76ea493110a70c0c358dee237c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Agus\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-1f39f384f8754e42a2a16deaf9061e45e231eb83.jar" />
+    </item>
+    <item
+        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-4c6415d8318c81cbe91947d3807bba616f564edd.jar" />
+    </item>
+    <item
+        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-789d4d894a133168245cc388cabca4c8c075d3dc.jar" />
+    </item>
+    <item
+        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\libs\httpmime-4.1.1.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="d34b163e52a9727101aced60775d51c5085390a1">
+        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\httpmime-4.1.1-9dec4a5bd19f6edc05f93edee8ea4608154d3f31.jar" />
+    </item>
+    <item
+        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\classes-460bb3f1715318bbde368f07be2228348487f0a3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-ae70944d06cc20c33bdb81282e78c875612cd0bc.jar" />
+    </item>
+    <item
+        jar="C:\Users\Agus\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-167d7a9a13e3938ce5978f0da7a4f18612b9bbbe.jar" />
+    </item>
+    <item
+        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-44653c42cec88e850931e9b816286624331be5af.jar" />
+    </item>
+    <item
+        jar="F:\Workspace\Android\KP\Coolist\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="F:\Workspace\Android\KP\Coolist\app\build\intermediates\pre-dexed\debug\classes-897383292c2fe64a03ca8f25090047628bbdc66e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="C:\Users\Agus\Documents\GitHub\Coolist\app\build\intermediates\pre-dexed\debug\classes-3fb7763aff11c0258b0bc7df6a7450691a56d1f7.jar" />
     </item>
 
 </items>

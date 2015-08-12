@@ -11,4 +11,6 @@
     <color name="yellow">#ffd110</color>
     <color name="yellow_press">#fee000</color>
     <color name="input_login_hint">#999999</color>
+    <color name="black_semi_transparent">#B2000000</color>
+    <color name="white_pressed">#f1f1f1</color>
 </resources>

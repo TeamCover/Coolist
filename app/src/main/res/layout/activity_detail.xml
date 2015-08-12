@@ -38,11 +38,12 @@
                 android:id="@+id/relatif">
 
                 <com.android.volley.toolbox.NetworkImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:paddingTop="85dp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:id="@+id/thumbnail"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
                     />
                 <TextView
                     android:layout_below="@+id/thumbnail"
@@ -224,7 +225,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <View
-                    android:layout_below="@+id/facebooklink"
+                    android:layout_below="@+id/emaillink"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="30dp"
                     android:id="@+id/margin6"

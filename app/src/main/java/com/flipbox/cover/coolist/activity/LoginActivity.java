@@ -73,7 +73,7 @@ public class LoginActivity extends ActionBarActivity {
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
                 if (email.trim().length() > 0 && password.trim().length() > 0) {
-                    getFetchData();
+                    //getFetchData();
                     String hashPassword = md5(password);
                     checkLogin(email, hashPassword);
                 } else {
@@ -89,7 +89,6 @@ public class LoginActivity extends ActionBarActivity {
 
     private void getFetchData() {
         pDialog.setMessage("Logging in ...");
-        showDialog();
 
         // Get data company
         JsonArrayRequest comReq = new JsonArrayRequest(AppConfig.URL_COMPANY, new Response.Listener<JSONArray>() {
@@ -108,8 +107,7 @@ public class LoginActivity extends ActionBarActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(getApplicationContext(),
-                        "Connection interrupted!", Toast.LENGTH_SHORT).show();
+
             }
         });
         AppController.getInstance().addToRequestQueue(comReq);
@@ -131,8 +129,7 @@ public class LoginActivity extends ActionBarActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(getApplicationContext(),
-                        "Connection interrupted!", Toast.LENGTH_SHORT).show();
+
             }
         });
         AppController.getInstance().addToRequestQueue(roleReq);
@@ -154,8 +151,7 @@ public class LoginActivity extends ActionBarActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(getApplicationContext(),
-                        "Connection interrupted!", Toast.LENGTH_SHORT).show();
+
             }
         });
         AppController.getInstance().addToRequestQueue(statusReq);
@@ -164,12 +160,16 @@ public class LoginActivity extends ActionBarActivity {
 
     private void checkLogin(final String email, final String password){
         String tag_string_req = "req_login";
+        pDialog.setMessage("Sing In....");
+        pDialog.setCancelable(false);
+        showDialog();
         StringRequest logReq = new StringRequest(Request.Method.POST, AppConfig.URL_LOGIN, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                     Log.d(TAG, s);
-                    hideDialog();
                         try {
+                            getFetchData();
+                            hideDialog();
                             JSONObject obj = new JSONObject(s);
                             db.addUser(obj.getInt("id"), obj.getInt("company_id"));
                             session.setLogin(true);
@@ -199,7 +199,7 @@ public class LoginActivity extends ActionBarActivity {
         AppController.getInstance().addToRequestQueue(logReq,tag_string_req);
     }
 
-    public static final String md5(final String s) {
+    private static final String md5(final String s) {
         try {
             // Create MD5 Hash
             MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
